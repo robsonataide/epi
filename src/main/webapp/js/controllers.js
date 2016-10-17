@@ -19,7 +19,7 @@
             },
             success: function(data) {
               this.$apply(function() {
-                Notification.success("<b>"+data.name+" com sucesso!</b><br/>Verifique seu email para ativar o cadastro!");
+                Notification.success("<b>"+data.name+", foi cadastrado com sucesso!</b><br/>Verifique seu email para ativar o cadastro!");
               }.bind(this));
             }.bind(this)
           });
@@ -83,6 +83,13 @@
           if (value !== undefined && value != "") {
             $('#themeSytleSheet').attr('href', "css/themes/"+value+".min.css");
           }
+        });
+        
+        $http({
+              method: 'GET',
+              url: '/api/rest/User/'+$rootScope.session.id,
+        }).then(function(data){
+          $rootScope.empresa = data.empresa;
         });
 
         if(!$rootScope.session) {
@@ -164,6 +171,7 @@
           //Here your view content is fully loaded !!
           navMain.off("click", "a", closeMenuHandler);
           navMain.on("click", "a", closeMenuHandler);
+          
         });
         
         $scope.themes = ["cerulean","cosmo","cyborg","darkly","flatly","journal","lumen","paper","readable","sandstone","simplex","slate","spacelab","superhero","united","yeti"];

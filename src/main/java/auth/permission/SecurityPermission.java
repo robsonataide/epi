@@ -18,6 +18,7 @@ public class SecurityPermission {
     
     // public
     http.authorizeRequests().antMatchers("/index.html").permitAll();
+    http.authorizeRequests().antMatchers("/ativacaoOk.html").permitAll();
     http.authorizeRequests().antMatchers("/favicon.ico").permitAll();
     http.authorizeRequests().antMatchers("/public/**").permitAll();
     http.authorizeRequests().antMatchers("/plugins/**").permitAll();
@@ -30,6 +31,7 @@ public class SecurityPermission {
     http.authorizeRequests().antMatchers("/views/login.view.html").permitAll();
     http.authorizeRequests().antMatchers("/views/error/**").permitAll();
     http.authorizeRequests().antMatchers("POST", "/register").permitAll();
+    http.authorizeRequests().antMatchers("GET", "/register/**").permitAll();
     
     // role admin permission
     http.authorizeRequests().antMatchers("/views/admin/**").hasAuthority(ROLE_ADMIN_NAME);

@@ -48,9 +48,7 @@ public class SendEmail {
 		try {
 			//Set key values
 			Map<String, String> input = new HashMap<String, String>();
-			input.put("Author", "java2db.com");
-			input.put("Topic", "HTML Template for Email");
-			input.put("Content In", "English");
+			input.put("##CODEACTIVATION##", codeActivation);
 
 			//HTML mail content
 			String htmlText = readEmailFromHtml("/META-INF/templateActivationCode.html", input);
